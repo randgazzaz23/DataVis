@@ -55,9 +55,12 @@
 			  
 		// Load Accidents and Community file:
 		Promise.all([
-		d3.json("Community.json"),
-		d3.csv ("accidents.csv") ]).then (([geo, accidents]) =>{
-		
+		   d3.json("Community.json"),
+			d3.csv("accidents.csv")
+			]).then(([geo, accidents]) => {
+			    console.log("GeoJSON data:", geo);       // logs Community.json
+			    console.log("CSV data:", accidents);     // logs accidents.csv
+
 		// Convert accidents to geojson points
 		const accidentPoints = accidents.map (d => ({
 			type:"Feature",
@@ -118,7 +121,7 @@
 				.style("display", "block")
 				.style("left", (event.pageX + 10) +"px")
 				.style("top", (event.pageY +10) +"px")
-				.html(`<b>${name}</b><br>Accidents: ${accidentCount[name]}`);
+				.html(`<b>${name}</b><br>Accidents: ${accidentCounter[name]}`);
         })
         .on("mouseout", () => tooltip.style("display", "none"));
 
@@ -127,5 +130,6 @@
 </body>
 </html>
 		
+
 
 
