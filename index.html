@@ -73,10 +73,14 @@
         ]
     }
 }));
+// Debug: check if points are inside any polygon
+accidentPoints.forEach((p, i) => {
+    const inAny = geo.features.some(poly => turf.booleanPointInPolygon(p, poly));
+    if (!inAny) {
+        console.log("Point not in any polygon:", p.geometry.coordinates);
+    }
+});
 
-// Optional debug to check first row
-console.log("First accident row:", accidents[0]);
-console.log("X:", parseFloat(accidents[0].acci_x.trim()), "Y:", parseFloat(accidents[0].acci_y.trim()));
 
 		
 		// accident counter per Community
@@ -137,6 +141,7 @@ console.log("X:", parseFloat(accidents[0].acci_x.trim()), "Y:", parseFloat(accid
 </body>
 </html>
 		
+
 
 
 
