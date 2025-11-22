@@ -68,8 +68,9 @@
 		    geometry: {
 		        type: "Point",
 		        coordinates: [
-		            parseFloat(d.acci_x.trim()),
-		            parseFloat(d.acci_y.trim())
+					parseFloat(d.acci_y.trim()),
+		            parseFloat(d.acci_x.trim())
+		            
         ]
     }
 }));
@@ -96,7 +97,7 @@ accidentPoints.forEach((p, i) => {
 			geo.features.forEach( poly => {
 				if (turf.booleanPointInPolygon(p, poly)){
 				const name = getCommunityName(poly);
-				accidentCounter[name]++;
+				 accidentCounter[name] = (accidentCounter[name] || 0) + 1;
 				}
 			});
 		});
@@ -141,6 +142,7 @@ accidentPoints.forEach((p, i) => {
 </body>
 </html>
 		
+
 
 
 
