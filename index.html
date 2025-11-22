@@ -61,16 +61,23 @@
 			    console.log("GeoJSON data:", geo);       // logs Community.json
 			    console.log("CSV data:", accidents);     // logs accidents.csv
 
-		// Convert accidents to geojson points
-		const accidentPoints = accidents.map (d => ({
-			type:"Feature",
-			properties :d,
-			geometry: {
-				type:"Point",
-				coordinates: [+d.acci_x, +d.acci_y]
-				}
-				}));
-				
+		// Convert accidents to geojson points (trim strings and convert to numbers)
+		const accidentPoints = accidents.map(d => ({
+		    type: "Feature",
+		    properties: d,
+		    geometry: {
+		        type: "Point",
+		        coordinates: [
+		            parseFloat(d.acci_x.trim()),
+		            parseFloat(d.acci_y.trim())
+        ]
+    }
+}));
+
+// Optional debug to check first row
+console.log("First accident row:", accidents[0]);
+console.log("X:", parseFloat(accidents[0].acci_x.trim()), "Y:", parseFloat(accidents[0].acci_y.trim()));
+
 		
 		// accident counter per Community
 		const accidentCounter ={};
@@ -130,6 +137,7 @@
 </body>
 </html>
 		
+
 
 
 
