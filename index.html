@@ -97,12 +97,7 @@ accidentPoints.forEach((p, i) => {
 );
 			console.log("Points not in any polygon:", pointsOutside);
 			
-			// Now do accident counting
-			const accidentCounter = {};
-			geo.features.forEach(f => {
-			    const name = getCommunityName(f);
-			    accidentCounter[name] = 0;
-			});
+			
 
 
 		//Spatial joint: point-in polygon
@@ -155,6 +150,7 @@ accidentPoints.forEach((p, i) => {
 </body>
 </html>
 		
+
 
 
 
