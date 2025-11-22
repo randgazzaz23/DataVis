@@ -91,7 +91,20 @@ accidentPoints.forEach((p, i) => {
 			const name = getCommunityName(f);
 			accidentCounter[name] =0;
 			});
+
+			const pointsOutside = accidentPoints.filter(p => 
+    		!geo.features.some(poly => turf.booleanPointInPolygon(p, poly))
+);
+			console.log("Points not in any polygon:", pointsOutside);
 			
+			// Now do accident counting
+			const accidentCounter = {};
+			geo.features.forEach(f => {
+			    const name = getCommunityName(f);
+			    accidentCounter[name] = 0;
+			});
+
+
 		//Spatial joint: point-in polygon
 		accidentPoints.forEach(p => {
 			geo.features.forEach( poly => {
@@ -142,6 +155,7 @@ accidentPoints.forEach((p, i) => {
 </body>
 </html>
 		
+
 
 
 
