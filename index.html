@@ -74,14 +74,6 @@
         ]
     }
 }));
-// Debug: check if points are inside any polygon
-accidentPoints.forEach((p, i) => {
-    const inAny = geo.features.some(poly => turf.booleanPointInPolygon(p, poly));
-    if (!inAny) {
-        console.log("Point not in any polygon:", p.geometry.coordinates);
-    }
-});
-
 
 		
 		// accident counter per Community
@@ -97,8 +89,6 @@ accidentPoints.forEach((p, i) => {
 );
 			console.log("Points not in any polygon:", pointsOutside);
 			
-			
-
 
 		//Spatial joint: point-in polygon
 		accidentPoints.forEach(p => {
@@ -150,6 +140,7 @@ accidentPoints.forEach((p, i) => {
 </body>
 </html>
 		
+
 
 
 
