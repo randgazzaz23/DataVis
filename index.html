@@ -55,8 +55,8 @@
 			  
 		// Load Accidents and Community file:
 		Promise.all([
-		   d3.json("https://randgazzaz23.github.io/DataVis/Community.geojson"),
-			d3.csv("https://raw.githubusercontent.com/randgazzaz23/DataVis/refs/heads/main/accidents%20(1).csv")
+		   d3.json("Community.geojson"),
+			d3.csv("accidents.csv")
 			]).then(([geo, accidents]) => {
 			    console.log("GeoJSON data:", geo);       // logs Community.json
 			    console.log("CSV data:", accidents);     // logs accidents.csv
@@ -130,6 +130,7 @@
 </body>
 </html>
 		
+
 
 
 
